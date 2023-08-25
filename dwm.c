@@ -493,8 +493,8 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
 			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - statusw) {
-                        x = selmon->ww - statusw;
+		else if (ev->x > selmon->ww - statusw - getsystraywidth()) {
+                        x = selmon->ww - statusw - getsystraywidth();
                         click = ClkStatusText;
                         statussig = 0;
                         for (text = s = stext; *s && x <= ev->x; s++) {
@@ -510,8 +510,6 @@ buttonpress(XEvent *e)
                                 }
                         }
                 } else
-			click = ClkStatusText;
-		else
 			click = ClkWinTitle;
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
@@ -854,14 +852,14 @@ drawbar(Monitor *m)
                                 ch = *s;
                                 *s = '\0';
                                 tw = TEXTW(text) - lrpad;
-                                drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+                                drw_text(drw, m->ww - statusw - stw + x, 0, tw, bh, 0, text, 0);
                                 x += tw;
                                 *s = ch;
                                 text = s + 1;
                         }
                 }
                 tw = TEXTW(text) - lrpad + 2;
-                drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+                drw_text(drw, m->ww - statusw - stw + x, 0, tw, bh, 0, text, 0);
                 tw = statusw;
 	}
 
