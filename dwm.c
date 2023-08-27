@@ -514,22 +514,24 @@ buttonpress(XEvent *e)
 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
 			click = ClkLtSymbol;
 		else if (ev->x > selmon->ww - statusw - getsystraywidth()) {
-                        x = selmon->ww - statusw - getsystraywidth();
-                        click = ClkStatusText;
-                        statussig = 0;
-                        for (text = s = stext; *s && x <= ev->x; s++) {
-                                if ((unsigned char)(*s) < ' ') {
-                                        ch = *s;
-                                        *s = '\0';
-                                        x += TEXTW(text) - lrpad;
-                                        *s = ch;
-                                        text = s + 1;
-                                        if (x >= ev->x)
-                                                break;
-                                        statussig = ch;
-                                }
-                        }
-                } else
+			x = selmon->ww - statusw - getsystraywidth() - lrpad + 3;
+			click = ClkStatusText;
+			statussig = 0;
+			for (text = s = stext; *s && x <= ev->x; s++)
+			{
+				if ((unsigned char)(*s) < ' ')
+				{
+					ch = *s;
+					*s = '\0';
+					x += TEXTW(text) - lrpad;
+					*s = ch;
+					text = s + 1;
+					if (x >= ev->x)
+						break;
+					statussig = ch;
+				}
+			}
+		} else
 			click = ClkWinTitle;
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
@@ -881,20 +883,20 @@ drawbar(Monitor *m)
 		char *text, *s, ch;
 		drw_setscheme(drw, scheme[SchemeNorm]);
 
-                x = 0;
+                x = -stw;
                 for (text = s = stext; *s; s++) {
                         if ((unsigned char)(*s) < ' ') {
                                 ch = *s;
                                 *s = '\0';
                                 tw = TEXTW(text) - lrpad;
-                                drw_text(drw, m->ww - statusw - stw + x, 0, tw, bh, 0, text, 0);
+                                drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
                                 x += tw;
                                 *s = ch;
                                 text = s + 1;
                         }
                 }
                 tw = TEXTW(text) - lrpad + 2;
-                drw_text(drw, m->ww - statusw - stw + x, 0, tw, bh, 0, text, 0);
+                drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
                 tw = statusw;
 	}
 
@@ -1082,7 +1084,7 @@ getsystraywidth()
 	Client *i;
 	if(showsystray)
 		for(i = systray->icons; i; w += i->w + systrayspacing, i = i->next) ;
-	return w ? w + systrayspacing : 1;
+	return w ? w + systrayspacing : 0;
 }
 
 pid_t
