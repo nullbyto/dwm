@@ -1,0 +1,25 @@
+--- a/Makefile	2023-08-26 00:28:20.670585990 +0200
++++ b/Makefile	2023-08-27 20:32:18.315630925 +0200
+@@ -43,9 +43,13 @@
+ 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
+ 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
+ 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
++	mkdir -p ${DESTDIR}${PREFIX}/share/xsessions
++	test -f ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop || cp -n dwm.desktop ${DESTDIR}${PREFIX}/share/xsessions
++	chmod 644 ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
+ 
+ uninstall:
+ 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
+ 		${DESTDIR}${MANPREFIX}/man1/dwm.1
++		${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
+ 
+ .PHONY: all options clean dist install uninstall
+--- /dev/null		2023-08-27 11:53:20.336787642 +0200
++++ b/dwm.desktop	2023-08-27 20:27:41.421158340 +0200
+@@ -0,0 +1,6 @@
++[Desktop Entry]
++Type=XSession
++Name=dwm
++Exec=dwm
++TryExec=dwm
++DesktopNames=dwm

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=XSession
+Name=dwm
+Exec=dwm
+TryExec=dwm
+DesktopNames=dwm
