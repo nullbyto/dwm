@@ -19,12 +19,12 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 #define ICONSPACING 5 /* space between icon and title */
 static const char *fonts[]          = { "Terminess Nerd Font Propo:size=13.5", "Font Awesome 6 Free:bold:size=11" };
 static const char dmenufont[]       = "Terminess Nerd Font Propo:size=13.5";
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#005577";
-static char selbgcolor[]            = "#005577";
+static char normbordercolor[]       = "#333333";
+static char normbgcolor[]           = "#101010";
+static char normfgcolor[]           = "#999999";
+static char selbordercolor[]        = "#224488";
+static char selbgcolor[]            = "#224488";
+static char selfgcolor[]            = "#ffffff";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
