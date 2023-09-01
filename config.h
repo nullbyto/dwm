@@ -102,18 +102,6 @@ static const char *appscmd[]  = { "dmenu-apps", "-m", dmenumon, "-fn", dmenufont
 static const char *powercmd[] = { "dmenu-power-menu", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 //static const char *roficmd[]  = { "rofi", "-modi", "drun,run", "-show", "drun", NULL };
 //static const char *powercmd[] = { "rofi", "-theme", "~/.config/rofi/configPower.rasi", "-show", "power-menu", "-modi", "power-menu:~/.scripts/rofi-power-menu", NULL };
-static const char *lockcmd[]  = { "betterlockscreen", "-l", "dimblur", "||", "i3lock", "||", "xlock", NULL };
-static const char *filescmd[]  = { "thunar", NULL };
-static const char *rangercmd[]  = { "alacritty", "--class", "ranger", "-e", "ranger", NULL };
-static const char *wallpapercmd[]  = { "alacritty", "--class", "ranger", "-e", "ranger", "Pictures/Wallpapers/", NULL };
-static const char *screensnipcmd[]  = { "flameshot", "gui", NULL };
-static const char *screenshotcmd[]  = { "flameshot", "screen", "--path", "~/Pictures/Screenshots/", NULL };
-static const char *brightnessup[]  = { "brightnessctl", "set", "+5%", NULL };
-static const char *brightnessdown[]  = { "brightnessctl", "set", "5%-", NULL };
-static const char *mute_mic[] = { "pactl", "set-source-mute",   "@DEFAULT_SOURCE@", "toggle", NULL };
-static const char *playpause[] = { "playerctl", "play-pause", NULL };
-static const char *nexttrack[] = { "playerctl", "next", NULL };
-static const char *prevtrack[] = { "playerctl", "previous", NULL };
 
 #include <X11/XF86keysym.h> /* multimedia keys */
 #include "movestack.c"
@@ -125,12 +113,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = appscmd } },
         { MODKEY,                       XK_Delete, spawn,          {.v = powercmd } },
-        { MODKEY,                       XK_e,      spawn,          {.v = filescmd } },
-        { MODKEY,                       XK_r,      spawn,          {.v = rangercmd } },
-        { MODKEY|ControlMask,           XK_w,      spawn,          {.v = wallpapercmd } },
-        { 0,                            XK_Print,  spawn,          {.v = screenshotcmd } },
-        { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screensnipcmd } },
-        { MODKEY|ShiftMask,             XK_x,      spawn,          {.v = lockcmd } },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -192,17 +174,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 	{ MODKEY|ControlMask,           XK_r,      quit,           {1} }, 
-
-	/* multimedia buttons */
-        { 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brightnessup } },
-        { 0,        XF86XK_MonBrightnessDown,      spawn,          {.v = brightnessdown } },
-        { 0,             XF86XK_AudioMicMute,      spawn,          {.v = mute_mic } },
-        { 0,                XF86XK_AudioPlay,      spawn,          {.v = playpause } },
-        { 0,                XF86XK_AudioNext,      spawn,          {.v = nexttrack } },
-        { 0,                XF86XK_AudioPrev,      spawn,          {.v = prevtrack } },
-        { 0,                XF86XK_AudioMute,      spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -38 $(pidof dwmblocks)") },
-        { 0,         XF86XK_AudioLowerVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; kill -38 $(pidof dwmblocks)") },
-        { 0,         XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; kill -38 $(pidof dwmblocks)") },
 };
 
 /* button definitions */
