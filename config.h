@@ -98,8 +98,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *appscmd[]  = { "dmenu-apps", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *powercmd[] = { "dmenu-power-menu", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *appscmd[]  = { "dmenu-apps", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *powercmd[] = { "dmenu-power-menu", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 //static const char *roficmd[]  = { "rofi", "-modi", "drun,run", "-show", "drun", NULL };
 //static const char *powercmd[] = { "rofi", "-theme", "~/.config/rofi/configPower.rasi", "-show", "power-menu", "-modi", "power-menu:~/.scripts/rofi-power-menu", NULL };
 
