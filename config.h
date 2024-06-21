@@ -46,6 +46,7 @@ static const Rule rules[] = {
 	{ "Xarchiver",            NULL,       NULL,       0,            1,           -1 },
 	{ "nm-connection-editor", NULL,       NULL,       0,            1,           -1 },
 	{ "Qalculate-gtk",        NULL,       NULL,       0,            1,           -1 },
+	{ "Windscribe",           NULL,       NULL,       0,            1,           -1 },
 	{ NULL,                   "htop",     NULL,       0,            1,           -1 },
 	{ NULL,                   "nmtui",    NULL,       0,            1,           -1 },
 	{ NULL,                   "ikhal",    NULL,       0,            1,           -1 },
