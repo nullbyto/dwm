@@ -92,20 +92,21 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 #define STATUSBAR "dwmblocks"
+#define TERMINAL  "kitty"
 
 // Todo: add constants TERMINAL..
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *appscmd[]  = { "dmenu-apps", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *powercmd[] = { "dmenu-power-menu", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 //static const char *roficmd[]  = { "rofi", "-modi", "drun,run", "-show", "drun", NULL };
 //static const char *powercmd[] = { "rofi", "-theme", "~/.config/rofi/configPower.rasi", "-show", "power-menu", "-modi", "power-menu:~/.scripts/rofi-power-menu", NULL };
 static const char *lockcmd[]  = { "betterlockscreen", "-l", "dimblur", "||", "i3lock", "||", "xlock", NULL };
 static const char *filescmd[]  = { "thunar", NULL };
-static const char *rangercmd[]  = { "alacritty", "--class", "ranger", "-e", "ranger", NULL };
-static const char *wallpapercmd[]  = { "alacritty", "--class", "ranger", "-e", "ranger", "Pictures/Wallpapers/", NULL };
+static const char *rangercmd[]  = { TERMINAL, "--class", "ranger", "-e", "ranger", NULL };
+static const char *wallpapercmd[]  = { TERMINAL, "--class", "ranger", "-e", "ranger", "Pictures/Wallpapers/", NULL };
 static const char *screensnipcmd[]  = { "flameshot", "gui", NULL };
 static const char *screenshotcmd[]  = { "flameshot", "screen", "--path", "~/Pictures/Screenshots/", NULL };
 static const char *brightnessup[]  = { "brightnessctl", "set", "+5%", NULL };
